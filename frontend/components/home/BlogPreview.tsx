@@ -4,14 +4,15 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getBlogPosts } from '@/lib/api';
+import { CalendarDays } from 'lucide-react';
 
 interface BlogPost {
-  _id: string;
+  id: string;
   title: string;
   slug: string;
   excerpt: string;
-  coverImage?: string;
-  publishedAt?: string;
+  cover_image?: string;
+  published_at?: string;
 }
 
 export default function BlogPreview() {
@@ -24,7 +25,7 @@ export default function BlogPreview() {
     getBlogPosts({ limit: '3' })
       .then((data) => {
         if (!mounted) return;
-        const list = Array.isArray(data) ? data : data.posts || [];
+        const list = Array.isArray(data) ? data : data.data || [];
         setPosts(list.slice(0, 3));
       })
       .catch(() => {
@@ -77,20 +78,26 @@ export default function BlogPreview() {
           <div className="grid md:grid-cols-3 gap-8">
             {posts.map((post) => (
               <Link
-                key={post._id}
+                key={post.id}
                 href={`/blog/${post.slug}`}
                 className="group block"
               >
                 <div className="relative h-48 rounded-2xl overflow-hidden">
                   <Image
-                    src={post.coverImage || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=600'}
+                    src={post.cover_image || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=600'}
                     alt={post.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
-                <h3 className="font-semibold text-lg text-neutral-900 mt-4 group-hover:text-accent transition-colors">
+                <div className="flex items-center gap-1.5 text-xs text-neutral-400 mt-4">
+                  <CalendarDays size={14} />
+                  {post.published_at
+                    ? new Date(post.published_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+                    : 'Draft'}
+                </div>
+                <h3 className="font-semibold text-lg text-neutral-900 mt-1 group-hover:text-accent transition-colors">
                   {post.title}
                 </h3>
                 <p className="text-neutral-600 text-sm mt-2 line-clamp-2">
