@@ -14,6 +14,7 @@ export default function Navbar() {
     { label: "Home", href: "/" },
     { label: "Destinations", href: "/destinations" },
     { label: "Blog", href: "/blog" },
+    { label: "About", href: "/about" },
   ];
 
   return (
