@@ -3,12 +3,14 @@
 import { useState, FormEvent } from "react";
 import Link from "next/link";
 import { useAuth } from "@/app/AuthContext";
+import { useRouter } from "next/navigation";
 import Card from "@/components/ui/Card";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 
 export default function LoginPage() {
   const { login } = useAuth();
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -24,8 +26,12 @@ export default function LoginPage() {
     setSubmitting(true);
     try {
       await login(email, password);
-      // Redirect handled by the parent layout or we can use router.push
-      window.location.href = "/";
+      const user = JSON.parse(localStorage.getItem("traveme_user") || "{}");
+      if (user.role === "admin") {
+        router.push("/admin");
+      } else {
+        router.push("/dashboard");
+      }
     } catch (err: unknown) {
       setError(
         err instanceof Error ? err.message : "An unexpected error occurred."

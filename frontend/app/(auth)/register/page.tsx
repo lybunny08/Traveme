@@ -3,12 +3,14 @@
 import { useState, FormEvent } from "react";
 import Link from "next/link";
 import { useAuth } from "@/app/AuthContext";
+import { useRouter } from "next/navigation";
 import Card from "@/components/ui/Card";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 
 export default function RegisterPage() {
   const { register } = useAuth();
+  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,7 +38,7 @@ export default function RegisterPage() {
     setSubmitting(true);
     try {
       await register(name, email, password);
-      window.location.href = "/";
+      router.push("/dashboard");
     } catch (err: unknown) {
       setError(
         err instanceof Error ? err.message : "An unexpected error occurred."

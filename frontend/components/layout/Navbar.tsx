@@ -45,14 +45,12 @@ export default function Navbar() {
               <div className="w-20 h-9 bg-neutral-100 animate-pulse rounded-full" />
             ) : user ? (
               <>
-                {user.role === "admin" && (
-                  <Link
-                    href="/admin"
-                    className="text-sm font-medium text-accent hover:text-accent-hover transition"
-                  >
-                    Admin
-                  </Link>
-                )}
+                <Link
+                  href={user.role === "admin" ? "/admin" : "/dashboard"}
+                  className="text-sm font-medium text-accent hover:text-accent-hover transition"
+                >
+                  {user.role === "admin" ? "Admin" : "Dashboard"}
+                </Link>
                 <span className="text-sm font-medium text-neutral-700">
                   {user.name}
                 </span>
@@ -106,15 +104,13 @@ export default function Navbar() {
               <div className="w-full h-9 bg-neutral-100 animate-pulse rounded-full" />
             ) : user ? (
               <>
-                {user.role === "admin" && (
-                  <Link
-                    href="/admin"
-                    className="block text-sm font-medium text-accent hover:text-accent-hover transition"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    Admin
-                  </Link>
-                )}
+                <Link
+                  href={user.role === "admin" ? "/admin" : "/dashboard"}
+                  className="block text-sm font-medium text-accent hover:text-accent-hover transition"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {user.role === "admin" ? "Admin" : "Dashboard"}
+                </Link>
                 <span className="block text-sm font-medium text-neutral-700">
                   {user.name}
                 </span>

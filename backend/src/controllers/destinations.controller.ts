@@ -89,26 +89,15 @@ export const getDestination = async (req: Request, res: Response): Promise<void>
         rating: true,
         comment: true,
         created_at: true,
-        user_id: true,
         user: {
-          select: { name: true, avatar_url: true },
+          select: { id: true, name: true, avatar_url: true },
         },
       },
     });
 
-    const reviewsMapped = reviews.map((r) => ({
-      id: r.id,
-      rating: r.rating,
-      comment: r.comment,
-      created_at: r.created_at,
-      user_id: r.user_id,
-      user_name: r.user.name,
-      user_avatar: r.user.avatar_url,
-    }));
-
     res.json({
       ...destination,
-      reviews: reviewsMapped,
+      reviews,
     });
   } catch (err) {
     console.error("getDestination error:", err);

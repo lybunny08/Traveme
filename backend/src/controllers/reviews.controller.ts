@@ -90,24 +90,13 @@ export const getDestinationReviews = async (req: Request, res: Response): Promis
         rating: true,
         comment: true,
         created_at: true,
-        user_id: true,
         user: {
-          select: { name: true, avatar_url: true },
+          select: { id: true, name: true, avatar_url: true },
         },
       },
     });
 
-    const mapped = reviews.map((r) => ({
-      id: r.id,
-      rating: r.rating,
-      comment: r.comment,
-      created_at: r.created_at,
-      user_id: r.user_id,
-      user_name: r.user.name,
-      user_avatar: r.user.avatar_url,
-    }));
-
-    res.json(mapped);
+    res.json(reviews);
   } catch (err) {
     console.error("getDestinationReviews error:", err);
     res.status(500).json({ error: "Server error" });
