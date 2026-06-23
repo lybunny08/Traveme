@@ -7,7 +7,7 @@ import { useAuth } from "@/app/AuthContext";
 import Button from "@/components/ui/Button";
 
 export default function Navbar() {
-  const { user, isLoading, logout } = useAuth();
+  const { user, isLoading } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navLinks = [
@@ -44,20 +44,13 @@ export default function Navbar() {
             {isLoading ? (
               <div className="w-20 h-9 bg-neutral-100 animate-pulse rounded-full" />
             ) : user ? (
-              <>
-                <Link
-                  href={user.role === "admin" ? "/admin" : "/dashboard"}
-                  className="text-sm font-medium text-accent hover:text-accent-hover transition"
-                >
+              <Link
+                href={user.role === "admin" ? "/admin" : "/dashboard"}
+              >
+                <Button variant="secondary" size="sm">
                   {user.role === "admin" ? "Admin" : "Dashboard"}
-                </Link>
-                <span className="text-sm font-medium text-neutral-700">
-                  {user.name}
-                </span>
-                <Button variant="ghost" size="sm" onClick={logout}>
-                  Logout
                 </Button>
-              </>
+              </Link>
             ) : (
               <>
                 <Link href="/login">
@@ -103,29 +96,14 @@ export default function Navbar() {
             {isLoading ? (
               <div className="w-full h-9 bg-neutral-100 animate-pulse rounded-full" />
             ) : user ? (
-              <>
-                <Link
-                  href={user.role === "admin" ? "/admin" : "/dashboard"}
-                  className="block text-sm font-medium text-accent hover:text-accent-hover transition"
-                  onClick={() => setMobileOpen(false)}
-                >
+              <Link
+                href={user.role === "admin" ? "/admin" : "/dashboard"}
+                onClick={() => setMobileOpen(false)}
+              >
+                <Button variant="secondary" size="sm" className="w-full">
                   {user.role === "admin" ? "Admin" : "Dashboard"}
-                </Link>
-                <span className="block text-sm font-medium text-neutral-700">
-                  {user.name}
-                </span>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="w-full"
-                  onClick={() => {
-                    logout();
-                    setMobileOpen(false);
-                  }}
-                >
-                  Logout
                 </Button>
-              </>
+              </Link>
             ) : (
               <>
                 <Link href="/login" onClick={() => setMobileOpen(false)}>
