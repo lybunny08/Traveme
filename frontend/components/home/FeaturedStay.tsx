@@ -7,12 +7,12 @@ import { getDestinations } from '@/lib/api';
 import Button from '@/components/ui/Button';
 
 interface Destination {
-  _id: string;
+  id: string;
   name: string;
   slug: string;
   location: string;
-  price: number;
-  coverImage?: string;
+  price_per_person: number;
+  images: string[];
 }
 
 export default function FeaturedStay() {
@@ -24,7 +24,7 @@ export default function FeaturedStay() {
     getDestinations({ limit: '1', is_featured: 'true' })
       .then((data) => {
         if (!mounted) return;
-        const list = Array.isArray(data) ? data : data.destinations || [];
+        const list = data?.data || [];
         if (list.length > 0) {
           setFeatured(list[0]);
         }
@@ -41,10 +41,10 @@ export default function FeaturedStay() {
   return (
     <section className="relative py-24 bg-dark overflow-hidden">
       {/* Background overlay image */}
-      {featured?.coverImage && (
+      {featured?.images?.[0] && (
         <div className="absolute inset-0">
           <Image
-            src={featured.coverImage}
+            src={featured.images[0]}
             alt=""
             fill
             className="object-cover opacity-30"
@@ -53,8 +53,8 @@ export default function FeaturedStay() {
         </div>
       )}
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        <h2 className="text-white text-4xl font-semibold tracking-tight">
+      <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
+        <h2 className="text-white text-5xl font-semibold tracking-tight">
           Where Comfort Meets Convenience &mdash; Our Top Stay Picks for You
         </h2>
 
@@ -71,10 +71,10 @@ export default function FeaturedStay() {
           </div>
         ) : featured ? (
           <div className="mt-10 max-w-sm mx-auto">
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
-              <div className="relative h-56">
+            <div className="bg-white flex rounded-2xl overflow-hidden shadow-lg">
+              <div className="relative w-40 h-56">
                 <Image
-                  src={featured.coverImage || 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=600'}
+                  src={featured.images?.[0] || 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=600'}
                   alt={featured.name}
                   fill
                   className="object-cover"
@@ -86,7 +86,7 @@ export default function FeaturedStay() {
                 <p className="text-sm text-neutral-500 mt-1">{featured.location}</p>
                 <div className="flex items-center justify-between mt-4">
                   <span className="text-lg font-bold text-neutral-900">
-                    ${featured.price}
+                    ${featured.price_per_person}
                     <span className="text-sm font-normal text-neutral-500">/person</span>
                   </span>
                 </div>

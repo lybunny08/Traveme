@@ -82,7 +82,7 @@ export default function BlogPreview() {
                 href={`/blog/${post.slug}`}
                 className="group block"
               >
-                <div className="relative h-48 rounded-2xl overflow-hidden">
+                <div className="relative h-80 rounded-2xl overflow-hidden">
                   <Image
                     src={post.cover_image || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=600'}
                     alt={post.title}

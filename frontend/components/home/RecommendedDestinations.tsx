@@ -98,7 +98,7 @@ export default function RecommendedDestinations() {
         </div>
 
         {loading ? (
-          <div className="flex gap-6 overflow-hidden">
+          <div className="flex gap-4 overflow-hidden">
             {Array.from({ length: 4 }).map((_, i) => (
               <SkeletonCard key={i} />
             ))}
@@ -106,11 +106,11 @@ export default function RecommendedDestinations() {
         ) : (
           <div
             ref={scrollRef}
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2"
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {destinations.slice(0, 8).map((dest) => (
-              <div key={dest.id} className="snap-start shrink-0 w-[280px]">
+              <div key={dest.id} className="snap-start shrink-0 w-[340px]">
                 <DestinationCard
                   name={dest.name}
                   slug={dest.slug}

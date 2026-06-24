@@ -9,26 +9,27 @@ export default function HeroSection() {
     <section className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <Image
+        {/* <Image
           src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2000"
           alt="Travel destination"
           fill
           className="object-cover"
           priority
           sizes="100vw"
-        />
+        /> */}
         <div className="absolute inset-0 bg-black/50" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
-        <h1 className="text-[clamp(3rem,6vw,6rem)] font-extrabold tracking-tight leading-none text-white">
-          Easy Trips, More Fun.
+      <div className="relative z-10 flex flex-col justify-end pb-24 h-full px-6">
+        <h1 className="text-[clamp(2rem,5vw,5rem)] font-extrabold tracking-tight leading-none text-white">
+          Easy Trips, <br /> More Fun.
         </h1>
-        <p className="text-lg text-white/80 mt-6 max-w-xl mx-auto">
-          Discover breathtaking destinations curated for every kind of traveler.
+        <p className="text-lg text-white/80 mt-6 max-w-xl ">
+          Discover new way to travel that's fun,easy,and stress-free. <br className='hidden md:block'/>
+          Turn your dream destinations into unforgettable realities
         </p>
-        <div className="mt-10 flex gap-4 justify-center flex-wrap">
+        <div className="mt-8 flex gap-4 flex-wrap">
           <Link href="/destinations">
             <Button variant="primary" size="lg">
               Explore Destinations

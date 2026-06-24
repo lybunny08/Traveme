@@ -251,7 +251,7 @@ function DestinationsContent() {
                 name={dest.name}
                 slug={dest.slug}
                 location={dest.location}
-                country={dest.location}
+                description={dest.description}
                 price={dest.price_per_person}
                 coverImage={dest.cover_image_url}
                 rating={dest.avg_rating}
