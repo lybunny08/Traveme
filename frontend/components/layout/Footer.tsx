@@ -1,98 +1,77 @@
 import Link from "next/link";
-import { MapPin, Mail, Phone, MapPinned } from "lucide-react";
+import Image from "next/image";
+import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand */}
-          <div>
-            <Link href="/" className="flex items-center gap-2 font-bold text-xl mb-4">
-              <MapPin className="text-accent" size={28} />
-              TraveMe
-            </Link>
-            <p className="text-neutral-400 text-sm leading-relaxed">
-              Discover breathtaking destinations curated for every kind of
-              traveler.
-            </p>
+    <footer className="bg-black text-white py-16">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16">
+        
+        {/* Colonne de gauche */}
+        <div className="space-y-20">
+          <p className="text-4xl font-medium leading-tight">
+            © Copyright 2025
+          </p>
+          
+          <div className="relative w-[300px] h-48 rounded-2xl overflow-hidden">
+            <Image 
+              src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=400" 
+              alt="Footer visual" 
+              fill 
+              className="object-cover"
+            />
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-base mb-4">Quick Links</h3>
-            <ul className="space-y-3">
-              {[
-                { label: "Home", href: "/" },
-                { label: "Destinations", href: "/destinations" },
-                { label: "Blog", href: "/blog" },
-                { label: "Contact", href: "/contact" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-neutral-400 text-sm hover:text-white transition"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Support */}
-          <div>
-            <h3 className="font-semibold text-base mb-4">Support</h3>
-            <ul className="space-y-3">
-              {[
-                { label: "FAQ", href: "/faq" },
-                { label: "Terms", href: "/terms" },
-                { label: "Privacy Policy", href: "/privacy" },
-                { label: "Help Center", href: "/help" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-neutral-400 text-sm hover:text-white transition"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="font-semibold text-base mb-4">Contact</h3>
-            <ul className="space-y-3 text-neutral-400 text-sm">
-              <li className="flex items-start gap-2">
-                <Mail size={16} className="mt-0.5 shrink-0" />
-                <span>hello@traveme.com</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Phone size={16} className="mt-0.5 shrink-0" />
-                <span>+1 (555) 123-4567</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <MapPinned size={16} className="mt-0.5 shrink-0" />
-                <span>
-                  123 Adventure Lane, Suite 100
-                  <br />
-                  New York, NY 10001
-                </span>
-              </li>
-            </ul>
+            <h4 className="font-medium mb-4">Social Media</h4>
+            <div className="flex gap-4">
+              <Facebook size={20} />
+              <Twitter size={20} />
+              <Instagram size={20} />
+              <Linkedin size={20} />
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-neutral-800">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-6">
-          <p className="text-neutral-500 text-sm text-center">
-            &copy; 2026 TraveMe. All rights reserved.
+        {/* Colonne de droite */}
+        <div className="space-y-20">
+          <p className="text-2xl font-light text-neutral-400 max-w-md">
+            At TraveMe Pharetra Leo Nullam Quis Nibh Pellentesque Vestibulum. In Massa, Eu Sed Nunc Massa
           </p>
+
+          <div className="text-neutral-400 space-y-1 text-sm">
+            <p>hello@TraveMe.com</p>
+            <p>(+62) 8700 0222 098</p>
+            <p>Jakarta 456, Indonesia</p>
+          </div>
+
+          <div className="grid grid-cols-3 gap-8">
+            <div>
+              <h4 className="text-xs uppercase tracking-widest text-neutral-500 mb-4">GENERAL</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link href="/">Home</Link></li>
+                <li><Link href="/about">About Us</Link></li>
+                <li><Link href="/work">How It's Work</Link></li>
+                <li><Link href="/testimonials">Testimonials</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-xs uppercase tracking-widest text-neutral-500 mb-4">ABOUT</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link href="/blog">Blog</Link></li>
+                <li><Link href="/destinations">Destinations</Link></li>
+                <li><Link href="/culture">Culture</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-xs uppercase tracking-widest text-neutral-500 mb-4">RESOURCE</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link href="/content">Free Content</Link></li>
+                <li><Link href="/glossary">Glossary</Link></li>
+                <li><Link href="/tutorials">Tutorials</Link></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

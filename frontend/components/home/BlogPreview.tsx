@@ -40,8 +40,8 @@ export default function BlogPreview() {
   return (
     <section className="py-24">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-14">
-          <h2 className="text-4xl font-semibold tracking-tight text-neutral-900">
+        <div className="max-w-xl mb-14">
+          <h2 className="text-5xl font-semibold tracking-tight text-neutral-900">
             Although A Picture Is Worth A Thousand Words
           </h2>
           <p className="text-neutral-600 text-lg mt-4">

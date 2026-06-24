@@ -70,26 +70,38 @@ export default function FeaturedStay() {
             </div>
           </div>
         ) : featured ? (
-          <div className="mt-10 max-w-sm mx-auto">
-            <div className="bg-white flex rounded-2xl overflow-hidden shadow-lg">
-              <div className="relative w-40 h-56">
+          <div className="mt-10 max-w-2xl mx-auto">
+            {/* 2. Utilisation de grid pour un contrôle précis des colonnes */}
+            <div className="bg-white p-4 grid grid-cols-[2fr,3fr] gap-6 rounded-2xl overflow-hidden shadow-lg items-center">
+              
+              {/* Côté Gauche (Image) */}
+              <div className="relative h-56 rounded-xl overflow-hidden">
                 <Image
                   src={featured.images?.[0] || 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=600'}
                   alt={featured.name}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 640px) 100vw, 380px"
+                  sizes="(max-width: 768px) 100vw, 300px"
                 />
               </div>
-              <div className="p-5 text-left">
-                <h3 className="font-semibold text-neutral-900 text-lg">{featured.name}</h3>
+
+              {/* Côté Droite (Texte) - Prend maintenant 3 parts de la grille */}
+              <div className="text-left pr-4">
+                <h3 className="font-semibold text-neutral-900 text-xl">{featured.name}</h3>
                 <p className="text-sm text-neutral-500 mt-1">{featured.location}</p>
+                
+                {/* Description ajoutée pour remplir l'espace si besoin */}
+                <p className="text-sm text-neutral-600 mt-2 line-clamp-2">
+                  Enjoy clean beaches and get more beautiful views with our exclusive stay package.
+                </p>
+
                 <div className="flex items-center justify-between mt-4">
                   <span className="text-lg font-bold text-neutral-900">
                     ${featured.price_per_person}
                     <span className="text-sm font-normal text-neutral-500">/person</span>
                   </span>
                 </div>
+                
                 <Link href={`/destinations/${featured.slug}`}>
                   <Button variant="primary" size="md" className="mt-4 w-full">
                     See More

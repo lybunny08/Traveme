@@ -19,26 +19,30 @@ export default function ContactCTA() {
   };
 
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-36 mx-6 mb-6 rounded-3xl overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <Image
+        {/* <Image
           src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=2000"
           alt="Contact background"
           fill
           className="object-cover"
           sizes="100vw"
-        />
+        /> */}
         <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-semibold text-white tracking-tight">
+      <div className="relative z-10 max-w-2xl px-6">
+        <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight">
           Reach Out Anytime For Travel Tips Or Info.
         </h2>
+        <p className='mt-4 text-white max-w-lg'>
+          Whether you're planning your next adventure, 
+          need more details about our services, or just want to chat about travel ideas - dont hesitate to reach out.
+        </p>
 
-        <form onSubmit={handleSubmit} className="mt-10 flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+        <form onSubmit={handleSubmit} className="mt-10 flex flex-col sm:flex-row gap-4 max-w-lg">
           <div className="flex-1">
             <Input
               type="email"

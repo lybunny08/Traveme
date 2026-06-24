@@ -5,10 +5,10 @@ import Image from 'next/image';
 import { Waves, Compass, Heart, Sofa } from 'lucide-react';
 
 const features = [
-  { icon: Waves, title: 'Diving and Snorkeling' },
-  { icon: Compass, title: 'Professional Tour Guide' },
-  { icon: Heart, title: 'Memorable' },
-  { icon: Sofa, title: 'Easy and Comfy' },
+  { icon: Waves, title: 'Diving and Snorkeling', paragraph: "The travel package includes lending services for diving and snorkeling equipment" },
+  { icon: Compass, title: 'Professional Tour Guide' ,paragraph: "A professional who can make your travel experience more enjoyable"},
+  { icon: Heart, title: 'Memorable' , paragraph: "Every moment of yours is captured by professional photography staff provided by travel"},
+  { icon: Sofa, title: 'Easy and Comfy' , paragraph: "Travel agency provides complete and reliable travel packages"},
 ];
 
 const images = [
@@ -34,7 +34,7 @@ export default function ElevateSection() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-stretch ">
           {/* Left Column */}
-          <div className="w-full lg:w-1/2">
+          <div className="w-full lg:w-1/2 md:my-8">
             <h2 className="text-4xl font-semibold text-neutral-900 tracking-tight">
               Elevate Your Adventures
             </h2>
@@ -47,12 +47,13 @@ export default function ElevateSection() {
                 return (
                   <div
                     key={feature.title}
-                    className="rounded-xl border border-neutral-100 p-4 hover:shadow-sm transition cursor-default"
+                    className="rounded-xl p-4"
                   >
-                    <Icon className="text-accent mb-2" size={24} />
-                    <h4 className="font-medium text-neutral-800 text-sm">
+                    <Icon className="text-neutral-800 mb-2" size={24} />
+                    <h4 className="font-medium text-neutral-800 text-lg">
                       {feature.title}
                     </h4>
+                    <p className='text-sm mt-4'>{feature.paragraph} </p>
                   </div>
                 );
               })}
