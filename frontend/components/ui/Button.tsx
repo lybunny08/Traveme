@@ -10,7 +10,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const base =
       "inline-flex items-center justify-center font-semibold transition rounded-lg disabled:opacity-50 disabled:cursor-not-allowed";
     const variants = {
-      primary: "bg-black text-white hover:bg-accent-hover",
+      primary: "bg-black text-white hover:bg-white hover:text-black",
       secondary: "border border-neutral-300 text-neutral-800 hover:bg-neutral-50",
       ghost: "text-neutral-700 hover:bg-neutral-100",
     };

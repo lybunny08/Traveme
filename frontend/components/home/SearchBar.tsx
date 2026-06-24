@@ -106,7 +106,7 @@ export default function SearchBar() {
   const today = new Date();
 
   return (
-    <div className="bg-zinc-950 p-6 md:p-12">
+    <div className="bg-black p-6 md:p-12">
       <form
         onSubmit={handleSubmit}
         className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-end gap-6 md:gap-10"
