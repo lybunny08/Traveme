@@ -2,21 +2,26 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Waves, Compass, Heart, Sofa } from 'lucide-react';
+import { Waves, User, Camera, Star } from 'lucide-react';
+import paris from '@/public/images/paris.jpg'
+import view from '@/public/images/view.jpg'
+import pov from '@/public/images/pov.jpg'
+import person from '@/public/images/person.jpg'
+import villa from '@/public/images/villa.jpg'
 
 const features = [
   { icon: Waves, title: 'Diving and Snorkeling', paragraph: "The travel package includes lending services for diving and snorkeling equipment" },
-  { icon: Compass, title: 'Professional Tour Guide' ,paragraph: "A professional who can make your travel experience more enjoyable"},
-  { icon: Heart, title: 'Memorable' , paragraph: "Every moment of yours is captured by professional photography staff provided by travel"},
-  { icon: Sofa, title: 'Easy and Comfy' , paragraph: "Travel agency provides complete and reliable travel packages"},
+  { icon: User, title: 'Professional Tour Guide' ,paragraph: "A professional who can make your travel experience more enjoyable"},
+  { icon: Camera, title: 'Memorable' , paragraph: "Every moment of yours is captured by professional photography staff provided by travel"},
+  { icon: Star, title: 'Easy and Comfy' , paragraph: "Travel agency provides complete and reliable travel packages"},
 ];
 
 const images = [
-  'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800',
-  'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800',
-  'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800',
-  'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800',
-  'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800',
+  paris,
+  view,
+  pov,
+  person,
+  villa,
 ];
 
 export default function ElevateSection() {
@@ -47,13 +52,12 @@ export default function ElevateSection() {
                 return (
                   <div
                     key={feature.title}
-                    className="rounded-xl p-4"
                   >
-                    <Icon className="text-neutral-800 mb-2" size={24} />
-                    <h4 className="font-medium text-neutral-800 text-lg">
+                    <Icon className="text-black mb-2" size={24} />
+                    <h4 className="font-medium text-neutral-800 text-base">
                       {feature.title}
                     </h4>
-                    <p className='text-sm mt-4'>{feature.paragraph} </p>
+                    <p className='text-sm text-neutral-500 mt-2 leading-relaxed'>{feature.paragraph}</p>
                   </div>
                 );
               })}
@@ -65,7 +69,7 @@ export default function ElevateSection() {
             <div className="relative h-full min-h-[400px] rounded-xl overflow-hidden">
               {images.map((src, index) => (
                 <Image
-                  key={src}
+                  key={index}
                   src={src}
                   alt={`Adventure ${index + 1}`}
                   fill
@@ -76,17 +80,17 @@ export default function ElevateSection() {
                 />
               ))}
 
-              {/* Image indicators - montrent les images accessibles */}
-              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2">
-                <div className='bg-white flex gap-2 p-2 rounded-xl'>
+              {/* Image indicators */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                <div className="bg-white flex flex-nowrap gap-2 p-2 rounded-xl overflow-hidden">
                   {images.map((src, index) => (
                     <button
-                      key={src}
+                      key={index}
                       onClick={() => setCurrent(index)}
-                      className={`relative h-10 w-14 rounded-lg overflow-hidden transition-all duration-300 ${
+                      className={`relative flex-shrink-0 h-10 w-14 rounded-lg overflow-hidden transition-all duration-300 ${
                         index === current
-                          ? 'ring-2 ring-white scale-110' 
-                          : 'opacity-80 hover:opacity-100'
+                          ? 'ring-2 ring-black scale-110'
+                          : 'opacity-70 hover:opacity-100'
                       }`}
                     >
                       <Image
