@@ -48,7 +48,7 @@ export default function HeroSection() {
             sizes="100vw"
           />
         ))}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* Content */}

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Star, ArrowRight } from 'lucide-react'; // J'ai remplacé ArrowBigLeft par ArrowRight, plus adapté
+import { Star, ArrowRight } from 'lucide-react';
 
 interface DestinationCardProps {
   name: string;
@@ -22,7 +22,6 @@ export default function DestinationCard({ name, slug, location, description, pri
     <Link href={`/destinations/${slug}`} className="group block">
       {/* Container principal en flex pour aligner image et texte */}
       <div className='flex flex-col items-start gap-4 p-3 bg-white rounded-xl shadow-sm border hover:shadow-md transition-shadow duration-300'>
-        
         {/* Image */}
         <div className="relative w-full h-60 shrink-0 overflow-hidden rounded-lg">
           <Image 
@@ -49,26 +48,26 @@ export default function DestinationCard({ name, slug, location, description, pri
         </div>
 
         {/* Texte et Infos */}
-        <div className="flex flex-col justify-between h-32 py-1">
+        <div className="flex flex-col justify-between pt-2 w-full">
           <div>
             <h3 className="font-semibold text-neutral-900 text-lg leading-tight">{name}</h3>
-            <p className="text-sm text-neutral-500">{location}</p>
             {description && (
-              <p className="text-sm text-neutral-600 mt-1 line-clamp-2">
+              <p className="text-sm text-neutral-600 mt-2 line-clamp-2">
                 {description.length > 200 ? `${description.slice(0, 200)}...` : description}
               </p>
             )}
           </div>
           
-          <div className="flex items-center justify-between mt-2">
-            <span className="text-lg font-bold text-neutral-900">
+          <div className="flex items-center justify-between mt-6">
+            <span className="text-lg leading-none font-bold text-neutral-900">
               ${price}
-              <span className="text-sm font-normal text-neutral-500">/pers</span>
+              <span className="text-sm leading-none font-normal text-neutral-500">/pers</span>
             </span>
           </div>
-
-          <div className='flex items-center gap-1 text-accent font-medium text-sm group-hover:underline'>
-            Booking Now <ArrowRight size={14} />
+          <div className="w-full border-t border-neutral-200 my-3"></div>
+          <div className='flex w-full justify-between items-center gap-1.5 text-neutral-900 font-medium text-sm'>
+            <span>Booking Now</span>
+            <ArrowRight size={14} />
           </div>
         </div>
       </div>

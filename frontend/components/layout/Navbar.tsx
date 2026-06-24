@@ -45,7 +45,7 @@ export default function Navbar() {
           <Link
             href="/"
             className={`flex items-center gap-2 font-bold text-xl transition-colors duration-300 ${
-              transparent ? "text-white" : "text-neutral-900"
+              transparent ? "text-white" : "text-black"
             }`}
           >
             <MapPin className="text-white" size={28} />
@@ -61,7 +61,7 @@ export default function Navbar() {
                 className={`text-sm font-medium transition-colors duration-300 ${
                   transparent
                     ? "text-white/90 hover:text-white"
-                    : "text-neutral-600 hover:text-neutral-900"
+                    : "text-neutral-600 hover:text-black"
                 }`}
               >
                 {link.label}
@@ -131,7 +131,7 @@ export default function Navbar() {
                 className={`block text-sm font-medium transition ${
                   transparent
                     ? "text-white/70 hover:text-white"
-                    : "text-neutral-600 hover:text-neutral-900"
+                    : "text-neutral-600 hover:text-black"
                 }`}
                 onClick={() => setMobileOpen(false)}
               >

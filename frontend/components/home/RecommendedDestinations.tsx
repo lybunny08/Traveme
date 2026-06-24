@@ -10,6 +10,7 @@ interface Destination {
   name: string;
   slug: string;
   location: string;
+  description: string;
   price: number;
   coverImage?: string;
   rating?: number;
@@ -35,7 +36,35 @@ function SkeletonCard() {
 export default function RecommendedDestinations() {
   const [destinations, setDestinations] = useState<Destination[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isDragging, setIsDragging] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const dragState = useRef({ isDown: false, startX: 0, scrollLeft: 0 });
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollRef.current) return;
+    dragState.current.isDown = true;
+    dragState.current.startX = e.pageX - scrollRef.current.offsetLeft;
+    dragState.current.scrollLeft = scrollRef.current.scrollLeft;
+    setIsDragging(true);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!dragState.current.isDown || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - dragState.current.startX) * 1.5;
+    scrollRef.current.scrollLeft = dragState.current.scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    dragState.current.isDown = false;
+    setIsDragging(false);
+  };
+
+  const handleMouseLeave = () => {
+    dragState.current.isDown = false;
+    setIsDragging(false);
+  };
 
   useEffect(() => {
     let mounted = true;
@@ -48,6 +77,7 @@ export default function RecommendedDestinations() {
             name: d.name,
             slug: d.slug,
             location: d.location,
+            description: d.description,
             price: Number(d.price_per_person),
             coverImage: d.images?.[0],
             rating: d.avg_rating ? Number(d.avg_rating) : undefined,
@@ -75,7 +105,7 @@ export default function RecommendedDestinations() {
   return (
     <section className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between mb-10">
+        <div className="flex items-end justify-between mb-10">
           <h2 className="text-4xl font-semibold text-neutral-900 tracking-tight">
             Recommended Destination
           </h2>
@@ -106,15 +136,22 @@ export default function RecommendedDestinations() {
         ) : (
           <div
             ref={scrollRef}
-            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2"
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
+            className={`flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 select-none ${
+              isDragging ? 'cursor-grabbing' : 'cursor-grab'
+            }`}
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {destinations.slice(0, 8).map((dest) => (
-              <div key={dest.id} className="snap-start shrink-0 w-[340px]">
+              <div key={dest.id} className={`snap-start shrink-0 w-[360px] ${isDragging ? 'pointer-events-none' : ''}`}>
                 <DestinationCard
                   name={dest.name}
                   slug={dest.slug}
                   location={dest.location}
+                  description={dest.description}
                   price={dest.price}
                   coverImage={dest.coverImage}
                   rating={dest.rating}

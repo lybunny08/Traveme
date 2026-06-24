@@ -109,7 +109,7 @@ export default function SearchBar() {
     <div className="bg-black p-6 md:p-12">
       <form
         onSubmit={handleSubmit}
-        className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-end gap-6 md:gap-10"
+        className="flex flex-col md:flex-row md:items-end gap-6 md:gap-10"
       >
         {/* Champ Lieu */}
         <div className="relative flex-1 w-full flex items-center border-b border-gray-700 focus-within:border-white transition-colors">
@@ -243,9 +243,9 @@ export default function SearchBar() {
         {/* Bouton Recherche */}
         <button
           type="submit"
-          className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 transition-colors shrink-0 mx-auto md:mx-0 mt-6 md:mt-0 shadow-lg"
+          className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 transition-colors shrink-0 mx-auto md:mx-0 mt-6 md:mt-0 shadow-lg"
         >
-          <Search className="text-black" size={32} />
+          <Search className="text-black" size={30} />
         </button>
       </form>
     </div>
