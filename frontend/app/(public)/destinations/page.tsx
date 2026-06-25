@@ -218,7 +218,7 @@ function DestinationsContent() {
   /* -------- render -------- */
 
   return (
-    <div className="px-6 md:px-12 lg:px-24 max-w-7xl mx-auto py-16">
+    <div className="px-6 md:px-12 lg:px-24 max-w-8xl mx-auto py-16">
       {/* Heading */}
       <div className="mb-10">
         <h1 className="text-4xl font-semibold tracking-tight text-neutral-900">
@@ -244,14 +244,14 @@ function DestinationsContent() {
       {/* Grid */}
       {!loading && !error && data && data.data.length > 0 && (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
             {data.data.map((dest) => (
               <DestinationCard
                 key={dest.id}
                 name={dest.name}
                 slug={dest.slug}
                 location={dest.location}
-                country={dest.location}
+                description={dest.description}
                 price={dest.price_per_person}
                 coverImage={dest.cover_image_url}
                 rating={dest.avg_rating}

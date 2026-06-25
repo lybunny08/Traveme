@@ -40,8 +40,8 @@ export default function BlogPreview() {
   return (
     <section className="py-24">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-14">
-          <h2 className="text-4xl font-semibold tracking-tight text-neutral-900">
+        <div className="max-w-xl mb-14">
+          <h2 className="text-5xl font-semibold tracking-tight text-neutral-900">
             Although A Picture Is Worth A Thousand Words
           </h2>
           <p className="text-neutral-600 text-lg mt-4">
@@ -82,7 +82,7 @@ export default function BlogPreview() {
                 href={`/blog/${post.slug}`}
                 className="group block"
               >
-                <div className="relative h-48 rounded-2xl overflow-hidden">
+                <div className="relative h-80 rounded-2xl overflow-hidden">
                   <Image
                     src={post.cover_image || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=600'}
                     alt={post.title}

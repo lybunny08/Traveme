@@ -355,8 +355,7 @@ export default function BookingPage() {
                 <div className="relative w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
                   <Image
                     src={
-                      destination.cover_image_url ||
-                      "https://res.cloudinary.com/demo/image/upload/v1/placeholder_sm"
+                      destination.cover_image_url || "/images/pool.jpg"
                     }
                     alt={destination.name}
                     fill
@@ -469,8 +468,7 @@ export default function BookingPage() {
               <div className="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
                 <Image
                   src={
-                    destination.cover_image_url ||
-                    "https://res.cloudinary.com/demo/image/upload/v1/placeholder_sm"
+                    destination.cover_image_url || "/images/pool.jpg"
                   }
                   alt={destination.name}
                   fill

@@ -124,8 +124,7 @@ export default function BlogDetailPage() {
       <div className="relative h-80 w-full overflow-hidden">
         <Image
           src={
-            post.cover_image ||
-            "https://res.cloudinary.com/demo/image/upload/v1/placeholder_blog"
+            post.cover_image || "/images/italy.jpg"
           }
           alt={post.title}
           fill

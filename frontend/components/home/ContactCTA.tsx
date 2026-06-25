@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
+import ctabg from '@/public/images/mointain.jpg'
 
 export default function ContactCTA() {
   const [email, setEmail] = useState('');
@@ -19,11 +20,11 @@ export default function ContactCTA() {
   };
 
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-36 mx-6 mb-6 rounded-3xl overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=2000"
+          src={ctabg}
           alt="Contact background"
           fill
           className="object-cover"
@@ -33,12 +34,16 @@ export default function ContactCTA() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-semibold text-white tracking-tight">
+      <div className="relative z-10 max-w-2xl px-6">
+        <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight">
           Reach Out Anytime For Travel Tips Or Info.
         </h2>
+        <p className='mt-4 text-white max-w-lg'>
+          Whether you're planning your next adventure, 
+          need more details about our services, or just want to chat about travel ideas - dont hesitate to reach out.
+        </p>
 
-        <form onSubmit={handleSubmit} className="mt-10 flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+        <form onSubmit={handleSubmit} className="mt-10 flex flex-col sm:flex-row gap-4 max-w-lg">
           <div className="flex-1">
             <Input
               type="email"
@@ -49,7 +54,7 @@ export default function ContactCTA() {
               required
             />
           </div>
-          <Button type="submit" variant="primary" size="lg">
+          <Button type="submit" variant="secondary" size="md">
             Submit
           </Button>
         </form>

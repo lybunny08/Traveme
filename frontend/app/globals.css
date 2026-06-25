@@ -4,6 +4,6 @@
 
 @layer base {
   body {
-    @apply bg-[#FAFAF8] text-[#1A1A1A] font-sans;
+    @apply bg-[#Fff] text-[#1A1A1A] font-sans;
   }
 }

@@ -226,8 +226,7 @@ export default function DestinationDetailPage() {
   if (error || !destination) return <ErrorState message={error || "Destination not found."} />;
 
   const heroSrc =
-    destination.cover_image_url ||
-    "https://res.cloudinary.com/demo/image/upload/v1/placeholder_hero";
+    destination.cover_image_url || "/images/hero1.jpg";
 
   return (
     <div>
