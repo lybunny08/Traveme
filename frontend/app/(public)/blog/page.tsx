@@ -47,7 +47,7 @@ interface BlogResponse {
 
 function BlogSkeleton() {
   return (
-    <div className="px-6 md:px-12 lg:px-24 max-w-7xl mx-auto py-16">
+    <div className="px-6 md:px-12 lg:px-24 max-w-8xl mx-auto py-16">
       <div className="mb-10">
         <div className="h-10 w-48 bg-neutral-200 rounded-lg animate-pulse" />
         <div className="h-5 w-52 bg-neutral-100 rounded mt-3 animate-pulse" />
@@ -245,8 +245,7 @@ function BlogContent() {
                 <div className="relative h-56 overflow-hidden">
                   <Image
                     src={
-                      post.cover_image ||
-                      "https://res.cloudinary.com/demo/image/upload/v1/placeholder_blog"
+                      post.cover_image || "/images/italy.jpg"
                     }
                     alt={post.title}
                     fill

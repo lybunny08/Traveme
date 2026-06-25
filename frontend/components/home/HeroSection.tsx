@@ -10,6 +10,7 @@ import hero3 from '@/public/images/hero3.jpg'
 import hero4 from '@/public/images/hero4.jpg'
 import hero5 from '@/public/images/hero5.jpg'
 import hero6 from '@/public/images/hero6.jpg'
+import { ArrowRight } from 'lucide-react';
 
 const heroImages = [hero1, hero2, hero3, hero4, hero5, hero6];
 
@@ -48,7 +49,8 @@ export default function HeroSection() {
             sizes="100vw"
           />
         ))}
-        <div className="absolute inset-0 bg-black/60" />
+        {/* <div className="absolute inset-0 bg-black/10" /> */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent" />
       </div>
 
       {/* Content */}
@@ -57,14 +59,15 @@ export default function HeroSection() {
           <h1 className="text-[clamp(2rem,4vw,4rem)] font-bold tracking-tight leading-none text-white">
             Easy Trips, <br /> More Fun.
           </h1>
-          <p className="text-md text-white/80 mt-6 max-w-sm ">
+          <p className="text-md text-white/80 mt-3 max-w-sm ">
             Discover new way to travel that's fun,easy,and stress-free. 
             Turn your dream destinations into unforgettable realities
           </p>
-          <div className="mt-8 flex gap-4 flex-wrap">
+          <div className="mt-5 flex gap-4 flex-wrap">
             <Link href="/destinations">
-              <Button variant="primary" size="lg">
+              <Button variant="primary" size="md" className='flex gap-4'>
                 Explore Destinations
+                <ArrowRight size={20} ></ArrowRight>
               </Button>
             </Link>
           </div>

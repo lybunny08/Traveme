@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
+import ctabg from '@/public/images/mointain.jpg'
 
 export default function ContactCTA() {
   const [email, setEmail] = useState('');
@@ -22,13 +23,13 @@ export default function ContactCTA() {
     <section className="relative py-36 mx-6 mb-6 rounded-3xl overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
-        {/* <Image
-          src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=2000"
+        <Image
+          src={ctabg}
           alt="Contact background"
           fill
           className="object-cover"
           sizes="100vw"
-        /> */}
+        />
         <div className="absolute inset-0 bg-black/60" />
       </div>
 
@@ -53,7 +54,7 @@ export default function ContactCTA() {
               required
             />
           </div>
-          <Button type="submit" variant="primary" size="lg">
+          <Button type="submit" variant="secondary" size="md">
             Submit
           </Button>
         </form>

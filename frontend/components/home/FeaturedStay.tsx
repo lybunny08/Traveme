@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getDestinations } from '@/lib/api';
 import Button from '@/components/ui/Button';
+import imagebg from '@/public/images/pool.jpg'
 
 interface Destination {
   id: string;
@@ -41,17 +42,17 @@ export default function FeaturedStay() {
   return (
     <section className="relative py-24 bg-dark overflow-hidden">
       {/* Background overlay image */}
-      {featured?.images?.[0] && (
+      {/* {featured?.images?.[0] && ( */}
         <div className="absolute inset-0">
           <Image
-            src={featured.images[0]}
+            src={imagebg}
             alt=""
             fill
             className="object-cover opacity-30"
             sizes="100vw"
           />
         </div>
-      )}
+      {/* )} */}
 
       <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
         <h2 className="text-white text-5xl font-semibold tracking-tight">

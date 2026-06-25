@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import italy from '@/public/images/italy.jpg'
 
 export default function Footer() {
   return (
@@ -9,17 +10,18 @@ export default function Footer() {
         
         {/* Colonne de gauche */}
         <div className="space-y-20">
-          <p className="text-4xl font-medium leading-tight">
-            © Copyright 2025
+          <p className="text-3xl font-medium leading-tight">
+            © Copyright 2026
           </p>
           
-          <div className="relative w-[300px] h-48 rounded-2xl overflow-hidden">
+          <div className="relative w-[300px] h-48 rounded-xl overflow-hidden">
             <Image 
-              src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=400" 
+              src={italy} 
               alt="Footer visual" 
               fill 
               className="object-cover"
             />
+            <div className="absolute inset-0 bg-black/30"></div>
           </div>
 
           <div>
