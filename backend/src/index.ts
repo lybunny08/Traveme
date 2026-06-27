@@ -18,10 +18,22 @@ const PORT = process.env.PORT || 4000;
 // CORS
 const allowedOrigins = (
   process.env.CORS_ORIGIN || "http://localhost:3000"
-).split(",");
+).split(",").map((o) => o.trim());
+const corsOrigins = [
+  ...allowedOrigins,
+  /\.vercel\.app$/,
+  /^https:\/\/traveme\.(vercel\.app|onrender\.com)$/,
+];
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      const match = corsOrigins.some((o) =>
+        typeof o === "string" ? o === origin : o.test(origin)
+      );
+      if (match) return callback(null, true);
+      callback(null, false);
+    },
     credentials: true,
   })
 );

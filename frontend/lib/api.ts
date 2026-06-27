@@ -1,4 +1,4 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
+const API_BASE = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api').replace(/\/+$/, '');
 
 async function fetchAPI(endpoint: string, options?: RequestInit) {
   const res = await fetch(`${API_BASE}${endpoint}`, {
